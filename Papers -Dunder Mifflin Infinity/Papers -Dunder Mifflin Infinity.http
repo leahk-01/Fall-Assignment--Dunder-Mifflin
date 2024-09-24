@@ -1,0 +1,6 @@
+@Papers__Dunder_Mifflin_Infinity_HostAddress = http://localhost:5137
+
+GET {{Papers__Dunder_Mifflin_Infinity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

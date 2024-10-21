@@ -20,7 +20,6 @@ public class PaperStoreService
 
     public async Task<PaperDto> CreatePaperAsync(CreatePaperDto? createPaperDto)
     {
-        // Create the paper entity
         var paper = new Paper
         {
             Name = createPaperDto.Name,
@@ -29,17 +28,15 @@ public class PaperStoreService
             Discontinued = false
         };
     
-        // Insert the new paper into the database
         var insertedPaper = await _repository.InsertPaperAsync(paper);
 
-        // Step 3: Link the new paper with the selected properties
-        // This method will link the properties via the join table (PaperProperties)
+        // SLink the new paper with the selected properties
         if (createPaperDto?.PropertyIds != null && createPaperDto.PropertyIds.Count > 0)
         {
             await _repository.LinkPaperWithPropertiesAsync(insertedPaper.Id, createPaperDto.PropertyIds);
         }
 
-        // Fetch the properties linked to this paper
+        // Fetch the properties 
         var linkedProperties = await _repository.GetPropertiesForPaperAsync(insertedPaper.Id);
 
         // Return the created paper details along with its linked properties

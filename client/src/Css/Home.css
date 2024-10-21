@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-image: url('.'); 
-    background-size: cover;
-    background-position: center;
+    height: 80vh;
+    width: 85vw;
+    background-attachment: fixed;
+    margin: 0; 
+    padding: 0;
 }
 
 .home-content {

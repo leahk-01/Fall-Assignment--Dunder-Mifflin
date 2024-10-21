@@ -1,48 +1,65 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;  /* Remove scroll bars */
-    height: 100%;      /* Ensure full height is used */
+    height: 100%;     
 }
 
 main {
-    height: calc(100vh - 60px); /* Fill the remaining height, subtracting top bar height */
-    overflow: hidden; /* Prevent scrolling inside main */
+    height: calc(100vh - 60px);
+    margin-top: 80px;
+    
+ 
 }
 
 .top-bar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;  /* Make it full width */
-    height: 60px;  /* Increase the height */
+    width: 100%; 
+    height: 60px;
     display: flex;
     justify-content: flex-end;
     align-items: center; 
     padding: 0 10px;  
-    background-color: orangered;  /* Light background */
-    z-index: 1000;  /* Keep it above other elements */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Add subtle shadow */
+    background-color: lightslategray; 
+    z-index: 1000; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.icons {
-    display: flex;
-    gap: 40px;
-    margin-right: 8px;
-}
 
-.icons span {
-    cursor: pointer;
-    position: relative;
-}
 
 .cart-count {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: #f00;
+    background-color: #black;
     color: #fff;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 12px;
+}
+
+.left-icons {
+    flex: 1; /* Push History to the left */
+}
+
+.right-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.left-icons span, .right-icons span {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.left-icons i, .right-icons i {
+    font-size: 20px;
+}
+
+/* Hover effect */
+.left-icons span:hover, .right-icons span:hover {
+    color: #ff9800;
 }

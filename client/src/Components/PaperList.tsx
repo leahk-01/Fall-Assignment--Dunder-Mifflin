@@ -1,27 +1,22 @@
-import  { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
-import { papersAtom } from '../Atoms/papersAtom.tsx'; 
+import { papersAtom } from '../Atoms/papersAtom.tsx';
 import axios from 'axios';
-import{cartAtom} from "../Atoms/cartAtom.tsx";
-import{Paper} from "../services/Api.ts";
+import { Paper } from "../services/Api.ts";
 import '../Css/PaperList.css';
 import { useNavigate } from 'react-router-dom';
 
-
-type Cart = {
-    [paperId: number]: number;  
-};
-
-const PaperList = () => {
-    const [papers, setPapers] = useAtom<Paper[]>(papersAtom);
-    const [cart, setCart] = useAtom<Cart>(cartAtom);
+const PaperList: React.FC = () => {
+    const [papers, setPapers] = useAtom<Paper[]>(papersAtom); 
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [sortOrder, setSortOrder] = useState('asc'); 
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPapers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/Paper');
-                setPapers(response.data);
+                const response = await axios.get('http://localhost:5000/api/Paper/all');
+                setPapers(response.data);  
             } catch (error) {
                 console.error('Failed to fetch papers:', error);
             }
@@ -29,51 +24,64 @@ const PaperList = () => {
         fetchPapers();
     }, [setPapers]);
 
-    const addToCart = (paperId: number) => {
-        setCart((prevCart) => ({
-            ...prevCart,
-            [paperId]: (prevCart[paperId] || 0) + 1,
-        }));
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
     };
 
-    const removeFromCart = (paperId: number) => {
-        setCart((prevCart) => {
-            const updatedCart = { ...prevCart };
-            if (updatedCart[paperId] > 1) {
-                updatedCart[paperId]--;
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSortOrder(e.target.value);
+    };
+
+    const filteredPapers = papers
+        .filter((paper) => paper.name!.toLowerCase().includes(searchTerm.toLowerCase()))
+        .sort((a, b) => {
+            if (sortOrder === 'asc') {
+                return a.price! - b.price!;
             } else {
-                delete updatedCart[paperId];
+                return b.price! - a.price!;
             }
-            return updatedCart;
         });
+
+    //  individual paper's detail page
+    const viewProduct = (paperId: number) => {
+        navigate(`/paper/${paperId}`); 
     };
 
     return (
-        <div className="paper-list">
-            {papers.length === 0 ? (
-                <p>No papers available.</p>
+        <div className="paper-list-container">
+        
+            <div className="search-sort-bar">
+                <input
+                    type="text"
+                    placeholder="Search for products..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+                <select onChange={handleSortChange} value={sortOrder}>
+                    <option value="asc">Sort by Price: Low to High</option>
+                    <option value="desc">Sort by Price: High to Low</option>
+                </select>
+            </div>
+
+            {/* Product Grid */}
+            {filteredPapers.length === 0 ? (
+                <p>No papers match your search.</p>
             ) : (
-                papers && papers.length > 0 && papers.map((paper: Paper) => (
-                    <div key={paper.id} className="paper-item">
-                        <div className="paper-info">
-                            <h3>{paper.name}</h3>
-                            <p>{paper.price} kr</p>
+                <div className="paper-grid">
+                    {filteredPapers.map((paper: Paper) => (
+                        <div
+                            key={paper.id}
+                            className="paper-card"
+                            onClick={() => viewProduct(paper.id!)}  
+                        >
+                            <div className="paper-card-content">
+                                <h3>{paper.name}</h3>
+                                <p>{paper.price} kr</p>
+                            </div>
                         </div>
-                        <div className="paper-actions">
-                            <button onClick={() => removeFromCart(paper.id!)}>-</button>
-                            <span>{cart[paper.id!] || 0}</span>  
-                            <button onClick={() => addToCart(paper.id!)}>+</button>
-                            <button className="cart-btn" onClick={() => addToCart(paper.id!)}>
-                                <img src="/path/to/cart-icon.png" alt="Add to Cart" />
-                            </button>
-                        </div>
-                    </div>
-                ))
+                    ))}
+                </div>
             )}
-            
-            <button onClick={() => navigate('/cart')}>
-                View Cart ({Object.keys(cart).length})
-            </button>
         </div>
     );
 };

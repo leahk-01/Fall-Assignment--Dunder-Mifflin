@@ -1,0 +1,133 @@
+/* Global styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}  
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    position: relative;
+}
+
+/* Form box styling */
+.form-box {
+    background-color: darkslategrey;
+    padding: 20px;
+    border: 2px solid orangered;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%; /* Make both sections take 45% of the width */
+}
+
+/* Divider line between the two sections */
+.divider {
+    height: 100%;
+    width: 3px;
+    background-color: orangered;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Place the divider in the exact center */
+    transform: translateX(-50%);
+}
+
+/* Headings */
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: center;
+    color: orange;
+    
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form field styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    font-size: 1em;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: orange;
+    color: #1a1a1a;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+
+.button-container {
+    margin-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .form-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

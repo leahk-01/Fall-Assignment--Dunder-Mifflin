@@ -1,0 +1,603 @@
+Index: DataAccess/MyDbContext.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess.Models;\r\nusing Microsoft.EntityFrameworkCore;\r\n\r\nnamespace DataAccess;\r\n\r\npublic partial class MyDbContext : DbContext\r\n{\r\n    public MyDbContext(DbContextOptions<MyDbContext> options)\r\n        : base(options)\r\n    {\r\n    }\r\n\r\n    public virtual DbSet<Customer> Customers { get; set; }\r\n\r\n    public virtual DbSet<Order> Orders { get; set; }\r\n\r\n    public virtual DbSet<OrderEntry> OrderEntries { get; set; }\r\n\r\n    public virtual DbSet<Paper> Papers { get; set; }\r\n\r\n    public virtual DbSet<Property> Properties { get; set; }\r\n\r\n    protected override void OnModelCreating(ModelBuilder modelBuilder)\r\n    {\r\n        modelBuilder.Entity<Customer>(entity => { entity.HasKey(e => e.Id).HasName(\"customers_pkey\"); });\r\n\r\n        modelBuilder.Entity<Order>(entity =>\r\n        {\r\n            entity.HasKey(e => e.Id).HasName(\"orders_pkey\");\r\n\r\n            entity.Property(e => e.OrderDate).HasDefaultValueSql(\"CURRENT_TIMESTAMP\");\r\n            entity.Property(e => e.Status).HasDefaultValueSql(\"'pending'::character varying\");\r\n\r\n            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)\r\n                .OnDelete(DeleteBehavior.Cascade)\r\n                .HasConstraintName(\"orders_customer_id_fkey\");\r\n        });\r\n\r\n        modelBuilder.Entity<OrderEntry>(entity =>\r\n        {\r\n            entity.HasKey(e => e.Id).HasName(\"order_entries_pkey\");\r\n\r\n            entity.HasOne(d => d.Order).WithMany(p => p.OrderEntries).HasConstraintName(\"order_entries_order_id_fkey\");\r\n\r\n            entity.HasOne(d => d.Paper).WithMany(p => p.OrderEntries)\r\n                .HasConstraintName(\"order_entries_paper_id_fkey\");\r\n        });\r\n\r\n        modelBuilder.Entity<Paper>(entity =>\r\n        {\r\n            entity.HasKey(e => e.Id).HasName(\"paper_pkey\");\r\n\r\n            entity.Property(e => e.Discontinued).HasDefaultValue(false);\r\n            entity.Property(e => e.Stock).HasDefaultValue(0);\r\n\r\n            entity.HasMany(d => d.Properties).WithMany(p => p.Papers)\r\n                .UsingEntity<Dictionary<string, object>>(\r\n                    \"PaperProperty\",\r\n                    r => r.HasOne<Property>().WithMany()\r\n                        .HasForeignKey(\"PropertyId\")\r\n                        .OnDelete(DeleteBehavior.ClientSetNull)\r\n                        .HasConstraintName(\"paper_properties_property_id_fkey\"),\r\n                    l => l.HasOne<Paper>().WithMany()\r\n                        .HasForeignKey(\"PaperId\")\r\n                        .OnDelete(DeleteBehavior.ClientSetNull)\r\n                        .HasConstraintName(\"paper_properties_paper_id_fkey\"),\r\n                    j =>\r\n                    {\r\n                        j.HasKey(\"PaperId\", \"PropertyId\").HasName(\"paper_properties_pkey\");\r\n                        j.ToTable(\"paper_properties\");\r\n                        j.HasIndex(new[] { \"PropertyId\" }, \"IX_paper_properties_property_id\");\r\n                        j.IndexerProperty<int>(\"PaperId\").HasColumnName(\"paper_id\");\r\n                        j.IndexerProperty<int>(\"PropertyId\").HasColumnName(\"property_id\");\r\n                    });\r\n        });\r\n\r\n        modelBuilder.Entity<Property>(entity => { entity.HasKey(e => e.Id).HasName(\"properties_pkey\"); });\r\n\r\n        OnModelCreatingPartial(modelBuilder);\r\n    }\r\n\r\n    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/MyDbContext.cs b/DataAccess/MyDbContext.cs
+--- a/DataAccess/MyDbContext.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/MyDbContext.cs	(date 1729377229495)
+@@ -76,7 +76,7 @@
+ 
+         modelBuilder.Entity<Property>(entity => { entity.HasKey(e => e.Id).HasName("properties_pkey"); });
+ 
+-        OnModelCreatingPartial(modelBuilder);
++        
+     }
+ 
+     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+Index: Api/Controllers/PaperController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess.Dtos;\r\nusing DataAccess.Models;\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Service;\r\n\r\nnamespace Api.Controllers;\r\n\r\n[Route(\"api/[controller]\")]\r\n[ApiController]\r\npublic class PaperController(PaperStoreService service) : ControllerBase\r\n{\r\n    \r\n\r\n    [HttpPost]\r\n    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto createPaperDto)\r\n    {\r\n        if (createPaperDto==null) \r\n        {\r\n            return BadRequest(new { message = \"Paper data is required.\" });\r\n        }\r\n        \r\n        try\r\n        {\r\n            var createdPaper = await service.CreatePaperAsync(createPaperDto);\r\n            return CreatedAtAction(nameof(GetPaperById), new { id = createdPaper.Id }, createdPaper);\r\n        }\r\n        catch (Exception ex)\r\n        {\r\n            return StatusCode(500, new { message = ex.Message });\r\n        }\r\n        \r\n    }\r\n    \r\n    [HttpGet]\r\n    public ActionResult<IEnumerable<Paper>> GetPapers()\r\n    {\r\n        return service.GetAllPapers();\r\n    }\r\n        \r\n        \r\n    [HttpGet(\"api/paper/{id}\")]\r\n    public async Task<ActionResult<PaperDto>> GetPaperById(int id)\r\n    {\r\n        var paper = await service.GetPaperByIdAsync(id);\r\n        if (paper ==null)\r\n        {\r\n            return NotFound($\"Paper with ID {id} not found.\");\r\n        }\r\n        return Ok(paper);\r\n    }\r\n\r\n\r\n    [HttpPut(\"discontinue/{id}\")]\r\n    public ActionResult DiscontinueProduct(int id)\r\n    {\r\n        service.DiscontinuePaper(id);\r\n        return NoContent();\r\n    }\r\n\r\n    [HttpPut(\"restock/{id}\")]\r\n    public ActionResult RestockProduct(int id, [FromBody] int quantity)\r\n    {\r\n        service.RestockPaper(id, quantity);\r\n        return NoContent();\r\n    }\r\n    \r\n   \r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Api/Controllers/PaperController.cs b/Api/Controllers/PaperController.cs
+--- a/Api/Controllers/PaperController.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/Api/Controllers/PaperController.cs	(date 1729376416450)
+@@ -12,7 +12,7 @@
+     
+ 
+     [HttpPost]
+-    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto createPaperDto)
++    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto? createPaperDto)
+     {
+         if (createPaperDto==null) 
+         {
+@@ -21,8 +21,8 @@
+         
+         try
+         {
+-            var createdPaper = await service.CreatePaperAsync(createPaperDto);
+-            return CreatedAtAction(nameof(GetPaperById), new { id = createdPaper.Id }, createdPaper);
++            var createdPaper = await service.CreatePaperAsync(createPaperDto);  // Create the paper
++            return Ok(createdPaper);
+         }
+         catch (Exception ex)
+         {
+@@ -31,7 +31,7 @@
+         
+     }
+     
+-    [HttpGet]
++    [HttpGet ("all")]
+     public ActionResult<IEnumerable<Paper>> GetPapers()
+     {
+         return service.GetAllPapers();
+@@ -42,10 +42,6 @@
+     public async Task<ActionResult<PaperDto>> GetPaperById(int id)
+     {
+         var paper = await service.GetPaperByIdAsync(id);
+-        if (paper ==null)
+-        {
+-            return NotFound($"Paper with ID {id} not found.");
+-        }
+         return Ok(paper);
+     }
+ 
+@@ -64,6 +60,31 @@
+         return NoContent();
+     }
+     
++    [HttpGet("properties")] 
++    public async Task<IActionResult> GetProperties()
++    {
++        try
++        {
++            var properties = await service.GetAllPropertiesAsync();
++
++            if (properties.Count == 0)
++            {
++                Console.WriteLine("No properties found.");
++                return NotFound("No properties found.");
++            }
++
++            Console.WriteLine($"Properties fetched: {properties.Count}"); // Log the number of properties
++            return Ok(properties);
++        }
++        catch (Exception ex)
++        {
++            Console.WriteLine($"Error fetching properties: {ex.Message}"); // Log the error
++            return StatusCode(500, "An error occurred while fetching properties.");
++        }
++    }
++
++
++   
+    
+ 
+ 
+Index: DataAccess/Models/Order.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System.ComponentModel.DataAnnotations;\r\nusing System.ComponentModel.DataAnnotations.Schema;\r\nusing Microsoft.EntityFrameworkCore;\r\n\r\nnamespace DataAccess.Models;\r\n\r\n[Table(\"orders\")]\r\n[Index(\"CustomerId\", Name = \"IX_orders_customer_id\")]\r\npublic class Order\r\n{\r\n    [Key] [Column(\"id\")] public int Id { get; set; }\r\n\r\n    [Column(\"order_date\")] public DateTime OrderDate { get; set; }\r\n\r\n    [Column(\"delivery_date\")] public DateOnly? DeliveryDate { get; set; }\r\n\r\n    [Column(\"status\")] [StringLength(50)] public string Status { get; set; } = null!;\r\n\r\n    [Column(\"total_amount\")] public double TotalAmount { get; set; }\r\n\r\n    [Column(\"customer_id\")] public int? CustomerId { get; set; }\r\n\r\n    [ForeignKey(\"CustomerId\")]\r\n    [InverseProperty(\"Orders\")]\r\n    public virtual Customer? Customer { get; set; }\r\n\r\n    [InverseProperty(\"Order\")]\r\n    public virtual ICollection<OrderEntry> OrderEntries { get; set; } = new List<OrderEntry>();\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/Models/Order.cs b/DataAccess/Models/Order.cs
+--- a/DataAccess/Models/Order.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/Models/Order.cs	(date 1729458834614)
+@@ -10,9 +10,9 @@
+ {
+     [Key] [Column("id")] public int Id { get; set; }
+ 
+-    [Column("order_date")] public DateTime OrderDate { get; set; }
++    [Column("order_date")] public DateTime? OrderDate { get; set; }
+ 
+-    [Column("delivery_date")] public DateOnly? DeliveryDate { get; set; }
++    [Column("delivery_date")] public DateTime? DeliveryDate { get; set; }
+ 
+     [Column("status")] [StringLength(50)] public string Status { get; set; } = null!;
+ 
+Index: DataAccess/Dtos/PropertyDto.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace DataAccess.Dtos;\r\n\r\npublic class PropertyDto\r\n{\r\n    public int Id { get; set; }\r\n    public string? PropertyName { get; set; }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/Dtos/PropertyDto.cs b/DataAccess/Dtos/PropertyDto.cs
+--- a/DataAccess/Dtos/PropertyDto.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/Dtos/PropertyDto.cs	(date 1729350708213)
+@@ -1,7 +1,8 @@
+ namespace DataAccess.Dtos;
+-
++using DataAccess.Dtos;
+ public class PropertyDto
+ {
+-    public int Id { get; set; }
+-    public string? PropertyName { get; set; }
+-}
+\ No newline at end of file
++    public int Id { get; set; }  // Unique ID of the property option
++    public string? PropertyName { get; set; }  // E.g., "Texture", "Color"
++    public string? PropertyValue { get; set; }  // E.g., "Smooth", "White"
++}
+Index: DataAccess/Dtos/PaperDto.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace DataAccess.Dtos;\r\n\r\npublic class PaperDto\r\n{\r\n    public int Id { get; set; } \r\n    public string? Name { get; set; } \r\n    public decimal Price { get; set; }\r\n    public List<PropertyDto>? Properties { get; set; }\r\n    \r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/Dtos/PaperDto.cs b/DataAccess/Dtos/PaperDto.cs
+--- a/DataAccess/Dtos/PaperDto.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/Dtos/PaperDto.cs	(date 1729350892930)
+@@ -5,6 +5,7 @@
+     public int Id { get; set; } 
+     public string? Name { get; set; } 
+     public decimal Price { get; set; }
++    public int  Stock { get; set; }
+     public List<PropertyDto>? Properties { get; set; }
+     
+ }
+\ No newline at end of file
+Index: Api/Program.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess;\r\nusing DataAccess.Interfaces;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing Service;\r\nusing System.Text.Json;\r\nusing System.Text.Json.Serialization;\r\n\r\n\r\nvar builder = WebApplication.CreateBuilder(args);\r\n\r\nbuilder.Services.AddControllers()\r\n    .AddJsonOptions(options =>\r\n    {\r\n        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;\r\n\r\n        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;\r\n    });\r\n\r\nbuilder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();\r\nbuilder.Services.AddScoped<PaperStoreService>();\r\n\r\nbuilder.Services.AddDbContext<MyDbContext>(options =>\r\n    options.UseNpgsql(builder.Configuration.GetConnectionString(\"MyDbConn\")));\r\n\r\nbuilder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();\r\n\r\nbuilder.Services.AddEndpointsApiExplorer();\r\nbuilder.Services.AddSwaggerGen();\r\n\r\nvar app = builder.Build();\r\n\r\nif (app.Environment.IsDevelopment())\r\n{\r\n    app.UseSwagger();\r\n    app.UseSwaggerUI(c =>\r\n    {\r\n        c.SwaggerEndpoint(\"/swagger/v1/swagger.json\", \"My API V1\");\r\n        c.RoutePrefix = string.Empty; // Set to empty string to serve the Swagger UI at the app's root\r\n    });\r\n}\r\n\r\n\r\napp.UseHttpsRedirection();\r\n\r\napp.UseAuthorization();\r\n\r\napp.MapControllers();\r\n\r\napp.UseRouting();\r\n\r\napp.UseCors(opts =>\r\n{\r\n    opts.AllowAnyOrigin();\r\n\r\n    opts.AllowAnyMethod();\r\n\r\n    opts.AllowAnyHeader();\r\n});\r\n\r\napp.Run();
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Api/Program.cs b/Api/Program.cs
+--- a/Api/Program.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/Api/Program.cs	(date 1729371188729)
+@@ -6,55 +6,70 @@
+ using System.Text.Json.Serialization;
+ 
+ 
++
+ var builder = WebApplication.CreateBuilder(args);
+ 
++// Add services to the container.
+ builder.Services.AddControllers()
+     .AddJsonOptions(options =>
+     {
++        // Handle circular references
+         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+-
++        
++        // Use camel case for JSON responses
+         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+     });
+ 
+-builder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();
+-builder.Services.AddScoped<PaperStoreService>();
++// Add services and dependencies (Dependency Injection)
++builder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();  // Register your repository
++builder.Services.AddScoped<PaperStoreService>();  // Register your service
+ 
++// Add DbContext with connection string
+ builder.Services.AddDbContext<MyDbContext>(options =>
+     options.UseNpgsql(builder.Configuration.GetConnectionString("MyDbConn")));
+ 
+-builder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();
++// Enable CORS with a named policy for better control
++builder.Services.AddCors(options =>
++{
++    options.AddPolicy("AllowAllOrigins", builder =>
++    {
++        builder.AllowAnyOrigin()
++               .AllowAnyMethod()
++               .AllowAnyHeader();
++    });
++});
+ 
++// Enable Swagger for API documentation
+ builder.Services.AddEndpointsApiExplorer();
+ builder.Services.AddSwaggerGen();
+ 
+ var app = builder.Build();
+ 
++// Middleware to serve Swagger UI in development mode
+ if (app.Environment.IsDevelopment())
+ {
+     app.UseSwagger();
+     app.UseSwaggerUI(c =>
+     {
+         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+-        c.RoutePrefix = string.Empty; // Set to empty string to serve the Swagger UI at the app's root
++        c.RoutePrefix = string.Empty; // Serve Swagger at the root
+     });
+ }
+ 
+-
++// Enable HTTPS redirection
+ app.UseHttpsRedirection();
+ 
++// Enable CORS middleware
++app.UseCors("AllowAllOrigins");  // Apply CORS policy globally
++
++// Routing
++app.UseRouting();
++
++// Enable Authorization (if applicable, for now we keep it)
+ app.UseAuthorization();
+ 
++// Map controllers (endpoints)
+ app.MapControllers();
+ 
+-app.UseRouting();
+-
+-app.UseCors(opts =>
+-{
+-    opts.AllowAnyOrigin();
+-
+-    opts.AllowAnyMethod();
+-
+-    opts.AllowAnyHeader();
+-});
+-
+-app.Run();
+\ No newline at end of file
++// Run the application
++app.Run();
+Index: Service/Service.csproj
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n    <PropertyGroup>\r\n        <TargetFramework>net8.0</TargetFramework>\r\n        <ImplicitUsings>enable</ImplicitUsings>\r\n        <Nullable>enable</Nullable>\r\n    </PropertyGroup>\r\n\r\n    <ItemGroup>\r\n        <ProjectReference Include=\"..\\DataAccess\\DataAccess.csproj\"/>\r\n        <PackageReference Include=\"FluentValidation\" Version=\"11.9.2\"/>\r\n\r\n    </ItemGroup>\r\n\r\n    <ItemGroup>\r\n        <Folder Include=\"TransferModels\\Requests\\\"/>\r\n        <Folder Include=\"TransferModels\\Responses\\\"/>\r\n        <Folder Include=\"Validators\\\"/>\r\n    </ItemGroup>\r\n\r\n</Project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Service/Service.csproj b/Service/Service.csproj
+--- a/Service/Service.csproj	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/Service/Service.csproj	(date 1729173011434)
+@@ -12,10 +12,4 @@
+ 
+     </ItemGroup>
+ 
+-    <ItemGroup>
+-        <Folder Include="TransferModels\Requests\"/>
+-        <Folder Include="TransferModels\Responses\"/>
+-        <Folder Include="Validators\"/>
+-    </ItemGroup>
+-
+ </Project>
+Index: DataAccess/PaperStoreRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess.Interfaces;\r\nusing DataAccess.Models;\r\nusing Microsoft.EntityFrameworkCore;\r\n\r\nnamespace DataAccess;\r\n\r\npublic class PaperStoreRepository : IPaperStoreRepository\r\n{\r\n    private readonly MyDbContext _context;\r\n\r\n    public PaperStoreRepository(MyDbContext context)\r\n    {\r\n        _context = context;\r\n    }\r\n\r\n    public List<Paper> GetAllPapers()\r\n    {\r\n        return _context.Papers.ToList();\r\n    }\r\n\r\n    public async Task <Paper> GetPaperByIdAsync(int id)\r\n    {\r\n        var paper = await _context.Papers.FirstOrDefaultAsync(p => p.Id == id);\r\n        if (paper == null)\r\n        {\r\n            throw new InvalidOperationException($\"Paper with id {id} not found\");\r\n        }\r\n        return paper;\r\n    }\r\n    \r\n  public async Task<Paper> InsertPaperAsync(Paper paper)\r\n  {\r\n      await _context.Papers.AddAsync(paper);\r\n      await _context.SaveChangesAsync();\r\n      return paper;\r\n  }\r\n\r\n    public void UpdatePaperStock(int paperId, int quantity)\r\n    {\r\n        var paper = _context.Papers.Find(paperId);\r\n        if (paper != null)\r\n        {\r\n            paper.Stock += quantity;\r\n            _context.SaveChanges();\r\n        }\r\n    }\r\n\r\n    public void DiscontinuePaper(int paperId)\r\n    {\r\n        var paper = _context.Papers.Find(paperId);\r\n        if (paper != null)\r\n        {\r\n            paper.Discontinued = true;\r\n            _context.SaveChanges();\r\n        }\r\n    }\r\n\r\n    public List<Paper> GetAllDiscontinuedPapers()\r\n    {\r\n        return _context.Papers.Where(p => p.Discontinued).ToList();\r\n    }\r\n\r\n    public List<Paper> GetPapersWithProperty(int propertyId)\r\n    {\r\n        return _context.Papers\r\n            .Include(p => p.Properties)\r\n            .Where(p => p.Properties.Any(prop => prop.Id == propertyId))\r\n            .ToList();\r\n    }\r\n\r\n    public void DeletePaper(int paperId)\r\n    {\r\n        var paper = _context.Papers.Find(paperId);\r\n        if (paper != null)\r\n        {\r\n            _context.Papers.Remove(paper);\r\n            _context.SaveChanges();\r\n        } \r\n    }\r\n    // chnage to async\r\n     public async Task<Property> GetPropertyByIdAsync(int propertyId)\r\n     {\r\n        return await _context.Properties.FindAsync(propertyId);\r\n     }\r\n\r\n     public async Task<Order> PlaceOrderAsync(Order order)\r\n     {\r\n         _context.Orders.Add(order);\r\n         await _context.SaveChangesAsync();\r\n         return order;\r\n     }\r\n\r\n     public async Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId)\r\n     {\r\n         return await _context.Orders\r\n             .Include(o => o.OrderEntries)\r\n             .ThenInclude(oe => oe.Paper)\r\n             .Where(o => o.CustomerId == customerId)\r\n             .ToListAsync();\r\n     }\r\n\r\n     public async Task<Order?> GetOrderByIdAsync(int orderId)\r\n     {\r\n         return await _context.Orders\r\n             .Include(o => o.OrderEntries)\r\n             .ThenInclude(oe => oe.Paper)\r\n             .FirstOrDefaultAsync(o => o.Id == orderId);\r\n     }\r\n\r\n     public async Task<IEnumerable<Order>> GetAllOrdersAsync()\r\n     {\r\n         return await _context.Orders\r\n             .Include(o => o.OrderEntries)\r\n             .ThenInclude(oe => oe.Paper)\r\n             .ToListAsync();\r\n     }\r\n\r\n     public async Task UpdateOrderAsync(Order order)\r\n     {\r\n         _context.Orders.Update(order); \r\n         await _context.SaveChangesAsync();  \r\n     }\r\n     \r\n     \r\n     public async Task<Customer> CreateCustomerAsync(Customer customer)\r\n        {\r\n             await _context.Customers.AddAsync(customer);\r\n             await _context.SaveChangesAsync();\r\n             return customer;\r\n        }\r\n        \r\n     public async Task<Customer?> GetCustomerByIdAsync(int id)\r\n     {\r\n         return await _context.Customers.FindAsync(id);\r\n     }\r\n     \r\n  \r\n\r\n     \r\n     \r\n\r\n\r\n     \r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/PaperStoreRepository.cs b/DataAccess/PaperStoreRepository.cs
+--- a/DataAccess/PaperStoreRepository.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/PaperStoreRepository.cs	(date 1729376695158)
+@@ -1,6 +1,7 @@
+ using DataAccess.Interfaces;
+ using DataAccess.Models;
+ using Microsoft.EntityFrameworkCore;
++using DataAccess.Dtos;
+ 
+ namespace DataAccess;
+ 
+@@ -18,23 +19,22 @@
+         return _context.Papers.ToList();
+     }
+ 
+-    public async Task <Paper> GetPaperByIdAsync(int id)
++    public async Task<Paper?> GetPaperByIdAsync(int id)
+     {
+-        var paper = await _context.Papers.FirstOrDefaultAsync(p => p.Id == id);
+-        if (paper == null)
+-        {
+-            throw new InvalidOperationException($"Paper with id {id} not found");
+-        }
++        var paper = await _context.Papers
++            .Include(p => p.Properties)  // Eagerly load the related properties
++            .FirstOrDefaultAsync(p => p.Id == id);
++
+         return paper;
+     }
+     
+   public async Task<Paper> InsertPaperAsync(Paper paper)
+   {
+-      await _context.Papers.AddAsync(paper);
++       _context.Papers.Add(paper);
+       await _context.SaveChangesAsync();
+       return paper;
+   }
+-
++ 
+     public void UpdatePaperStock(int paperId, int quantity)
+     {
+         var paper = _context.Papers.Find(paperId);
+@@ -80,7 +80,12 @@
+     // chnage to async
+      public async Task<Property> GetPropertyByIdAsync(int propertyId)
+      {
+-        return await _context.Properties.FindAsync(propertyId);
++         var property = await _context.Properties.FindAsync(propertyId);
++         if (property == null)
++         {
++             throw new Exception("Property not found");  // You can throw an exception or handle the case where the property is not found
++         }
++         return property;
+      }
+ 
+      public async Task<Order> PlaceOrderAsync(Order order)
+@@ -132,13 +137,91 @@
+      public async Task<Customer?> GetCustomerByIdAsync(int id)
+      {
+          return await _context.Customers.FindAsync(id);
++         
++     }
++
++   
++
++
++     public async Task<List<PropertyDto>> GetAllPropertiesAsync()
++     {
++         try
++         {
++             var properties = await _context.Properties
++                 .Select(p => new PropertyDto
++                 {
++                     Id = p.Id,
++                     PropertyName = p.PropertyName,
++                     PropertyValue = p.PropertyValue
++                 })
++                 .ToListAsync();
++
++             if (properties.Count == 0)
++             {
++                 Console.WriteLine("No properties found.");
++             }
++             return properties;
++         }
++         catch (Exception ex)
++         {
++             // Log database-related errors
++             Console.WriteLine($"Database error: {ex.Message}");
++             throw;  // Re-throw the exception to be caught by the controller
++         }
+      }
+-     
+-  
+-
+-     
+-     
++
++
++     
++     public async Task LinkPaperWithPropertiesAsync(int paperId, List<int> propertyIds)
++     {
++         // Step 1: Fetch the paper by its ID
++         var paper = await _context.Papers
++             .Include(p => p.Properties)  // Include existing linked properties
++             .FirstOrDefaultAsync(p => p.Id == paperId);
++
++         if (paper == null)
++         {
++             throw new Exception("Paper not found");
++         }
++
++         // Step 2: Fetch the properties that match the provided property IDs
++         var properties = await _context.Properties
++             .Where(p => propertyIds.Contains(p.Id))
++             .ToListAsync();
+ 
++         // Step 3: Link the selected properties to the paper
++         foreach (var property in properties)
++         {
++             if (!paper.Properties.Contains(property))  // Avoid duplicates
++             {
++                 paper.Properties.Add(property);  // Link the property to the paper
++             }
++         }
+ 
++         // Step 4: Save changes, which updates the join table
++         await _context.SaveChangesAsync();
++     }
++
++
++     public async Task<List<PropertyDto>> GetPropertiesForPaperAsync(int paperId)
++     {
++         // Fetch the properties associated with the paper from the PaperProperties join table
++         var properties = await _context.Properties
++             .Where(pp => pp.Id == paperId)
++             .Select(pp => new PropertyDto
++             {
++                 Id = pp.Id,
++                 PropertyName = pp.PropertyName,
++                 PropertyValue = pp.PropertyValue
++             })
++             .ToListAsync();
++
++         return properties;
++     }
++
++     
++     
++
++
+      
+ }
+\ No newline at end of file
+Index: DataAccess/Interfaces/IPaperStoreRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess.Models;\r\n\r\nnamespace DataAccess.Interfaces;\r\n\r\npublic interface IPaperStoreRepository\r\n{\r\n    List<Paper> GetAllPapers();\r\n\r\n    Task<Paper>GetPaperByIdAsync(int id);\r\n\r\n    Task<Paper>InsertPaperAsync(Paper paper);\r\n\r\n    void UpdatePaperStock(int paperId, int quantity);\r\n\r\n    void DiscontinuePaper(int paperId);\r\n\r\n    List<Paper> GetAllDiscontinuedPapers();\r\n\r\n    List<Paper> GetPapersWithProperty(int propertyId);\r\n\r\n    void DeletePaper(int paperId);\r\n    \r\n    Task<Property> GetPropertyByIdAsync(int propertyId);\r\n\r\n    Task<Order> PlaceOrderAsync(Order order);\r\n    \r\n    Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId);\r\n    \r\n    Task<Order?> GetOrderByIdAsync(int orderId); \r\n    \r\n    Task<IEnumerable<Order>> GetAllOrdersAsync();\r\n\r\n    Task UpdateOrderAsync(Order order);\r\n    \r\n    Task<Customer>CreateCustomerAsync(Customer customer);\r\n    \r\n    Task<Customer?> GetCustomerByIdAsync(int id);\r\n    \r\n    \r\n\r\n    \r\n\r\n    \r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DataAccess/Interfaces/IPaperStoreRepository.cs b/DataAccess/Interfaces/IPaperStoreRepository.cs
+--- a/DataAccess/Interfaces/IPaperStoreRepository.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/DataAccess/Interfaces/IPaperStoreRepository.cs	(date 1729376477715)
+@@ -1,12 +1,12 @@
+ using DataAccess.Models;
+-
++using DataAccess.Dtos;
+ namespace DataAccess.Interfaces;
+ 
+ public interface IPaperStoreRepository
+ {
+     List<Paper> GetAllPapers();
+ 
+-    Task<Paper>GetPaperByIdAsync(int id);
++    Task<Paper?> GetPaperByIdAsync(int id);
+ 
+     Task<Paper>InsertPaperAsync(Paper paper);
+ 
+@@ -35,10 +35,11 @@
+     Task<Customer>CreateCustomerAsync(Customer customer);
+     
+     Task<Customer?> GetCustomerByIdAsync(int id);
+-    
+-    
++
++    Task<List<PropertyDto>> GetAllPropertiesAsync();
++
++    Task LinkPaperWithPropertiesAsync(int paperId, List<int> propertyIds);
+ 
+-    
+ 
+-    
++    Task<List<PropertyDto>> GetPropertiesForPaperAsync(int insertedPaperId);
+ }
+\ No newline at end of file
+Index: Service/PaperStoreService.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using DataAccess.Dtos;\r\nusing DataAccess.Interfaces;\r\nusing DataAccess.Models;\r\n\r\nnamespace Service;\r\n\r\npublic class PaperStoreService\r\n{\r\n    private readonly IPaperStoreRepository _repository;\r\n\r\n    public PaperStoreService(IPaperStoreRepository repository)\r\n    {\r\n        _repository = repository;\r\n    }\r\n\r\n    public List<Paper> GetAllPapers()\r\n    {\r\n        return _repository.GetAllPapers();\r\n    }\r\n\r\n    public async Task<PaperDto> CreatePaperAsync(CreatePaperDto createPaperDto)\r\n\r\n    {\r\n        var createdpaper = new Paper\r\n        {\r\n            Name = createPaperDto.Name,\r\n            Stock = createPaperDto.Stock,\r\n            Price = createPaperDto.Price,\r\n            Discontinued = false \r\n        };\r\n\r\n        if (createPaperDto.PropertyIds != null)\r\n        {\r\n            foreach (var propertyId in createPaperDto.PropertyIds)\r\n            {\r\n                // Find each property by its ID\r\n                var property = await _repository.GetPropertyByIdAsync(propertyId); \r\n                if (property != null)\r\n                {\r\n                    createdpaper.Properties.Add(property);\r\n                }\r\n            }\r\n        }\r\n\r\n        var createdPaper =await _repository.InsertPaperAsync(createdpaper);\r\n        \r\n        //paper to return in list\r\n        var paperDto =new PaperDto\r\n        {\r\n            Name = createdPaper.Name,\r\n            Price = (decimal)createdPaper.Price,\r\n            Properties = createdPaper.Properties.Select(p => new PropertyDto\r\n            {\r\n                 Id = p.Id,\r\n                 PropertyName = p.PropertyName\r\n            }).ToList()\r\n        };\r\n        return paperDto;\r\n    }\r\n    \r\n     public async Task<PaperDto> GetPaperByIdAsync(int id)\r\n     {\r\n         var paper = await _repository.GetPaperByIdAsync(id);\r\n         if (paper == null)\r\n         {\r\n             return null;\r\n         }\r\n \r\n         var paperDto = new PaperDto\r\n         {\r\n             \r\n             Name = paper.Name,\r\n             Price = (decimal)paper.Price,\r\n             Properties = paper.Properties.Select(pp => new PropertyDto\r\n             {\r\n                 Id = pp.Id,\r\n                 PropertyName = pp.PropertyName\r\n             }).ToList()\r\n         };\r\n \r\n         return paperDto;\r\n     }   \r\n\r\n\r\n    public void DiscontinuePaper(int id)\r\n    {\r\n        _repository.DiscontinuePaper(id);\r\n    }\r\n\r\n    public void RestockPaper(int id, int quantity)\r\n    {\r\n        _repository.UpdatePaperStock(id, quantity);\r\n    }\r\n    \r\n\r\n    \r\n    // orders\r\n    \r\n    public async Task<Order> PlaceOrderAsync(OrderDto orderDto)\r\n    {\r\n        var orderEntries = new List<OrderEntry>();\r\n        double totalAmount = 0;\r\n    \r\n        foreach (var orderEntryDto in orderDto.OrderEntries)\r\n        {\r\n            var product = await _repository.GetPaperByIdAsync(orderEntryDto.PaperId); \r\n            if (product == null)\r\n            {\r\n                throw new ArgumentException($\"Invalid product ID: {orderEntryDto.PaperId}\");\r\n            }\r\n    \r\n            var orderEntry = new OrderEntry\r\n            {\r\n                PaperId = orderEntryDto.PaperId,\r\n                Quantity = orderEntryDto.Quantity,\r\n            };\r\n    \r\n            totalAmount += product.Price * orderEntry.Quantity;\r\n            orderEntries.Add(orderEntry);\r\n        }\r\n    \r\n        var order = new Order\r\n        {\r\n            OrderDate = DateTime.UtcNow, \r\n            Status = orderDto.Status, \r\n            CustomerId = orderDto.CustomerId,\r\n            OrderEntries = orderEntries,\r\n            TotalAmount = totalAmount \r\n        };\r\n    \r\n        return await _repository.PlaceOrderAsync(order);\r\n    }\r\n\r\n    \r\n  \r\n    \r\n    public async Task<IEnumerable<Order>> GetOrderHistoryAsync(int customerId)\r\n    {\r\n        return await _repository.GetOrdersByCustomerIdAsync(customerId);\r\n    }\r\n    \r\n    public async Task<object?> GetOrderByIdAsync(int orderId)\r\n    {\r\n        return await _repository.GetOrdersByCustomerIdAsync(orderId);\r\n    }\r\n\r\n    public async Task<object?> GetAllOrdersAsync()\r\n    {\r\n        return await _repository.GetAllOrdersAsync();\r\n    }\r\n    \r\n    public async Task<Order?> UpdateOrderStatusAsync(int orderId, OrderStatusDto orderStatusDto)\r\n    {\r\n        var order = await _repository.GetOrderByIdAsync(orderId);\r\n    \r\n        if (order == null)\r\n        {\r\n            return null;  \r\n        }\r\n\r\n        order.Status = orderStatusDto.Status;\r\n\r\n        await _repository.UpdateOrderAsync(order);\r\n\r\n        return order;  \r\n    }\r\n    \r\n    //customer\r\n    \r\n    public async Task<Customer> CreateCustomerAsync(CustomerDto customerDto)\r\n      {\r\n          var customer = new Customer\r\n          {\r\n              Name =customerDto.Name,\r\n              Address=customerDto.Address,\r\n              Phone=customerDto.Phone,\r\n              Email=customerDto.Email\r\n          };\r\n          \r\n         var createdCustomer= await _repository.CreateCustomerAsync(customer);\r\n         return createdCustomer;\r\n      }\r\n      \r\n      \r\n    public async Task<Customer?> GetCustomerByIdAsync(int id)\r\n    {\r\n        return await _repository.GetCustomerByIdAsync(id); \r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Service/PaperStoreService.cs b/Service/PaperStoreService.cs
+--- a/Service/PaperStoreService.cs	(revision a1dba837e2d0a23a182ae8e275f059c2d6c82ddd)
++++ b/Service/PaperStoreService.cs	(date 1729377849247)
+@@ -18,45 +18,41 @@
+         return _repository.GetAllPapers();
+     }
+ 
+-    public async Task<PaperDto> CreatePaperAsync(CreatePaperDto createPaperDto)
+-
++    public async Task<PaperDto> CreatePaperAsync(CreatePaperDto? createPaperDto)
+     {
+-        var createdpaper = new Paper
++        // Create the paper entity
++        var paper = new Paper
+         {
+             Name = createPaperDto.Name,
+             Stock = createPaperDto.Stock,
+             Price = createPaperDto.Price,
+-            Discontinued = false 
++            Discontinued = false
+         };
++    
++        // Insert the new paper into the database
++        var insertedPaper = await _repository.InsertPaperAsync(paper);
+ 
+-        if (createPaperDto.PropertyIds != null)
++        // Step 3: Link the new paper with the selected properties
++        // This method will link the properties via the join table (PaperProperties)
++        if (createPaperDto?.PropertyIds != null && createPaperDto.PropertyIds.Count > 0)
+         {
+-            foreach (var propertyId in createPaperDto.PropertyIds)
+-            {
+-                // Find each property by its ID
+-                var property = await _repository.GetPropertyByIdAsync(propertyId); 
+-                if (property != null)
+-                {
+-                    createdpaper.Properties.Add(property);
+-                }
+-            }
++            await _repository.LinkPaperWithPropertiesAsync(insertedPaper.Id, createPaperDto.PropertyIds);
+         }
+ 
+-        var createdPaper =await _repository.InsertPaperAsync(createdpaper);
+-        
+-        //paper to return in list
+-        var paperDto =new PaperDto
++        // Fetch the properties linked to this paper
++        var linkedProperties = await _repository.GetPropertiesForPaperAsync(insertedPaper.Id);
++
++        // Return the created paper details along with its linked properties
++        return new PaperDto
+         {
+-            Name = createdPaper.Name,
+-            Price = (decimal)createdPaper.Price,
+-            Properties = createdPaper.Properties.Select(p => new PropertyDto
+-            {
+-                 Id = p.Id,
+-                 PropertyName = p.PropertyName
+-            }).ToList()
++            Id = insertedPaper.Id,
++            Name = insertedPaper.Name,
++            Stock = insertedPaper.Stock,
++            Price = (decimal)insertedPaper.Price,
++            Properties = linkedProperties  // Return only the linked properties
+         };
+-        return paperDto;
+     }
++
+     
+      public async Task<PaperDto> GetPaperByIdAsync(int id)
+      {
+@@ -71,10 +67,12 @@
+              
+              Name = paper.Name,
+              Price = (decimal)paper.Price,
++             Stock = paper.Stock,
+              Properties = paper.Properties.Select(pp => new PropertyDto
+              {
+                  Id = pp.Id,
+-                 PropertyName = pp.PropertyName
++                 PropertyName = pp.PropertyName,
++                 PropertyValue = pp.PropertyValue
+              }).ToList()
+          };
+  
+@@ -122,6 +120,7 @@
+         var order = new Order
+         {
+             OrderDate = DateTime.UtcNow, 
++            DeliveryDate = DateTime.UtcNow.AddDays(3),
+             Status = orderDto.Status, 
+             CustomerId = orderDto.CustomerId,
+             OrderEntries = orderEntries,
+@@ -188,5 +187,12 @@
+     }
+ 
+ 
++    public async Task<List<PropertyDto>> GetAllPropertiesAsync()
++    {
++        return await _repository.GetAllPropertiesAsync();
++    }
+ 
++
++   
++    
+ }

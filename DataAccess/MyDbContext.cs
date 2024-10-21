@@ -76,7 +76,7 @@ public partial class MyDbContext : DbContext
 
         modelBuilder.Entity<Property>(entity => { entity.HasKey(e => e.Id).HasName("properties_pkey"); });
 
-        OnModelCreatingPartial(modelBuilder);
+        
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -12,7 +12,7 @@ public class PaperController(PaperStoreService service) : ControllerBase
     
 
     [HttpPost]
-    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto createPaperDto)
+    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto? createPaperDto)
     {
         if (createPaperDto==null) 
         {
@@ -21,8 +21,8 @@ public class PaperController(PaperStoreService service) : ControllerBase
         
         try
         {
-            var createdPaper = await service.CreatePaperAsync(createPaperDto);
-            return CreatedAtAction(nameof(GetPaperById), new { id = createdPaper.Id }, createdPaper);
+            var createdPaper = await service.CreatePaperAsync(createPaperDto);  // Create the paper
+            return Ok(createdPaper);
         }
         catch (Exception ex)
         {
@@ -31,7 +31,7 @@ public class PaperController(PaperStoreService service) : ControllerBase
         
     }
     
-    [HttpGet]
+    [HttpGet ("all")]
     public ActionResult<IEnumerable<Paper>> GetPapers()
     {
         return service.GetAllPapers();
@@ -42,10 +42,6 @@ public class PaperController(PaperStoreService service) : ControllerBase
     public async Task<ActionResult<PaperDto>> GetPaperById(int id)
     {
         var paper = await service.GetPaperByIdAsync(id);
-        if (paper ==null)
-        {
-            return NotFound($"Paper with ID {id} not found.");
-        }
         return Ok(paper);
     }
 
@@ -64,6 +60,31 @@ public class PaperController(PaperStoreService service) : ControllerBase
         return NoContent();
     }
     
+    [HttpGet("properties")] 
+    public async Task<IActionResult> GetProperties()
+    {
+        try
+        {
+            var properties = await service.GetAllPropertiesAsync();
+
+            if (properties.Count == 0)
+            {
+                Console.WriteLine("No properties found.");
+                return NotFound("No properties found.");
+            }
+
+            Console.WriteLine($"Properties fetched: {properties.Count}"); // Log the number of properties
+            return Ok(properties);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching properties: {ex.Message}"); // Log the error
+            return StatusCode(500, "An error occurred while fetching properties.");
+        }
+    }
+
+
+   
    
 
 

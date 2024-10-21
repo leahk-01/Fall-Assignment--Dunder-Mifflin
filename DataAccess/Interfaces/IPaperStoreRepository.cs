@@ -1,12 +1,12 @@
 using DataAccess.Models;
-
+using DataAccess.Dtos;
 namespace DataAccess.Interfaces;
 
 public interface IPaperStoreRepository
 {
     List<Paper> GetAllPapers();
 
-    Task<Paper>GetPaperByIdAsync(int id);
+    Task<Paper?> GetPaperByIdAsync(int id);
 
     Task<Paper>InsertPaperAsync(Paper paper);
 
@@ -35,10 +35,11 @@ public interface IPaperStoreRepository
     Task<Customer>CreateCustomerAsync(Customer customer);
     
     Task<Customer?> GetCustomerByIdAsync(int id);
-    
-    
 
-    
+    Task<List<PropertyDto>> GetAllPropertiesAsync();
 
-    
+    Task LinkPaperWithPropertiesAsync(int paperId, List<int> propertyIds);
+
+
+    Task<List<PropertyDto>> GetPropertiesForPaperAsync(int insertedPaperId);
 }

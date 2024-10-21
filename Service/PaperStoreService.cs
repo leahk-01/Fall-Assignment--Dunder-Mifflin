@@ -18,45 +18,41 @@ public class PaperStoreService
         return _repository.GetAllPapers();
     }
 
-    public async Task<PaperDto> CreatePaperAsync(CreatePaperDto createPaperDto)
-
+    public async Task<PaperDto> CreatePaperAsync(CreatePaperDto? createPaperDto)
     {
-        var createdpaper = new Paper
+        // Create the paper entity
+        var paper = new Paper
         {
             Name = createPaperDto.Name,
             Stock = createPaperDto.Stock,
             Price = createPaperDto.Price,
-            Discontinued = false 
+            Discontinued = false
         };
+    
+        // Insert the new paper into the database
+        var insertedPaper = await _repository.InsertPaperAsync(paper);
 
-        if (createPaperDto.PropertyIds != null)
+        // Step 3: Link the new paper with the selected properties
+        // This method will link the properties via the join table (PaperProperties)
+        if (createPaperDto?.PropertyIds != null && createPaperDto.PropertyIds.Count > 0)
         {
-            foreach (var propertyId in createPaperDto.PropertyIds)
-            {
-                // Find each property by its ID
-                var property = await _repository.GetPropertyByIdAsync(propertyId); 
-                if (property != null)
-                {
-                    createdpaper.Properties.Add(property);
-                }
-            }
+            await _repository.LinkPaperWithPropertiesAsync(insertedPaper.Id, createPaperDto.PropertyIds);
         }
 
-        var createdPaper =await _repository.InsertPaperAsync(createdpaper);
-        
-        //paper to return in list
-        var paperDto =new PaperDto
+        // Fetch the properties linked to this paper
+        var linkedProperties = await _repository.GetPropertiesForPaperAsync(insertedPaper.Id);
+
+        // Return the created paper details along with its linked properties
+        return new PaperDto
         {
-            Name = createdPaper.Name,
-            Price = (decimal)createdPaper.Price,
-            Properties = createdPaper.Properties.Select(p => new PropertyDto
-            {
-                 Id = p.Id,
-                 PropertyName = p.PropertyName
-            }).ToList()
+            Id = insertedPaper.Id,
+            Name = insertedPaper.Name,
+            Stock = insertedPaper.Stock,
+            Price = (decimal)insertedPaper.Price,
+            Properties = linkedProperties  // Return only the linked properties
         };
-        return paperDto;
     }
+
     
      public async Task<PaperDto> GetPaperByIdAsync(int id)
      {
@@ -71,10 +67,12 @@ public class PaperStoreService
              
              Name = paper.Name,
              Price = (decimal)paper.Price,
+             Stock = paper.Stock,
              Properties = paper.Properties.Select(pp => new PropertyDto
              {
                  Id = pp.Id,
-                 PropertyName = pp.PropertyName
+                 PropertyName = pp.PropertyName,
+                 PropertyValue = pp.PropertyValue
              }).ToList()
          };
  
@@ -122,6 +120,7 @@ public class PaperStoreService
         var order = new Order
         {
             OrderDate = DateTime.UtcNow, 
+            DeliveryDate = DateTime.UtcNow.AddDays(3),
             Status = orderDto.Status, 
             CustomerId = orderDto.CustomerId,
             OrderEntries = orderEntries,
@@ -188,5 +187,12 @@ public class PaperStoreService
     }
 
 
+    public async Task<List<PropertyDto>> GetAllPropertiesAsync()
+    {
+        return await _repository.GetAllPropertiesAsync();
+    }
 
+
+   
+    
 }

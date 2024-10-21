@@ -1,0 +1,112 @@
+import React, { useState } from 'react';
+import { useAtom } from 'jotai';
+import { customerIdAtom } from '../Atoms/customerAtom';  
+import { Api } from '../services/Api';  
+
+const api = new Api();
+
+const Login = () => {
+    // @ts-ignore
+    const [customerId, setCustomerId] = useAtom(customerIdAtom);
+    const [idInput, setIdInput] = useState('');  
+    const [customerDetails, setCustomerDetails] = useState<any>(null);  
+    const [showCreateAccount, setShowCreateAccount] = useState(false);  
+    const [newCustomer, setNewCustomer] = useState({
+        name: '',
+        email: '',
+        phone: ''
+    }); 
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const customer = await api.api.customersDetail(parseInt(idInput));
+            if (customer) {
+                setCustomerId(id );  
+                setCustomerDetails(customer);  
+            } else {
+                alert('Customer not found!');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
+    const handleCreateAccount = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const createdCustomer = await api.api.customersCreateCreate(newCustomer);
+            if (createdCustomer) {
+                setCustomerId(createdCustomer.id);  
+                setCustomerDetails(createdCustomer); 
+                alert('Account created successfully!');
+            }
+        } catch (error) {
+            console.error('Account creation error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleLogin}>
+                <h2>Login</h2>
+                <input
+                    type="text"
+                    placeholder="Enter your ID"
+                    value={idInput}
+                    onChange={(e) => setIdInput(e.target.value)}
+                    required
+                />
+                <button type="submit">Login</button>
+            </form>
+
+            {customerDetails && (
+                <div>
+                    <h3>Customer Details</h3>
+                    <p><strong>ID:</strong> {customerDetails.id}</p>
+                    <p><strong>Name:</strong> {customerDetails.name}</p>
+                    <p><strong>Email:</strong> {customerDetails.email}</p>
+                    <p><strong>Phone:</strong> {customerDetails.phone}</p>
+                </div>
+            )}
+
+            {!customerDetails && !showCreateAccount && (
+                <div>
+                    <p>Don't have an account? <button onClick={() => setShowCreateAccount(true)}>Create an account</button></p>
+                </div>
+            )}
+
+            {showCreateAccount && (
+                <form onSubmit={handleCreateAccount}>
+                    <h2>Create Account</h2>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={newCustomer.name}
+                        onChange={(e) => setNewCustomer({ ...newCustomer, name: e.target.value })}
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={newCustomer.email}
+                        onChange={(e) => setNewCustomer({ ...newCustomer, email: e.target.value })}
+                        required
+                    />
+                    <input
+                        type="text"
+                        placeholder="Phone"
+                        value={newCustomer.phone}
+                        onChange={(e) => setNewCustomer({ ...newCustomer, phone: e.target.value })}
+                        required
+                    />
+                    <button type="submit">Create Account</button>
+                </form>
+            )}
+        </div>
+    );
+};
+
+export default Login;

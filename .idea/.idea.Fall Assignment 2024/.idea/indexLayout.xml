@@ -2,7 +2,9 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes />
+    <explicitIncludes>
+      <Path>client</Path> <!-- Include the client folder -->
+    </explicitIncludes>
     <explicitExcludes />
   </component>
 </project>

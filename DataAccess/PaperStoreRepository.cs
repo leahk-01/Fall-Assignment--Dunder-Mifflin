@@ -1,0 +1,144 @@
+using DataAccess.Interfaces;
+using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace DataAccess;
+
+public class PaperStoreRepository : IPaperStoreRepository
+{
+    private readonly MyDbContext _context;
+
+    public PaperStoreRepository(MyDbContext context)
+    {
+        _context = context;
+    }
+
+    public List<Paper> GetAllPapers()
+    {
+        return _context.Papers.ToList();
+    }
+
+    public async Task <Paper> GetPaperByIdAsync(int id)
+    {
+        var paper = await _context.Papers.FirstOrDefaultAsync(p => p.Id == id);
+        if (paper == null)
+        {
+            throw new InvalidOperationException($"Paper with id {id} not found");
+        }
+        return paper;
+    }
+    
+  public async Task<Paper> InsertPaperAsync(Paper paper)
+  {
+      await _context.Papers.AddAsync(paper);
+      await _context.SaveChangesAsync();
+      return paper;
+  }
+
+    public void UpdatePaperStock(int paperId, int quantity)
+    {
+        var paper = _context.Papers.Find(paperId);
+        if (paper != null)
+        {
+            paper.Stock += quantity;
+            _context.SaveChanges();
+        }
+    }
+
+    public void DiscontinuePaper(int paperId)
+    {
+        var paper = _context.Papers.Find(paperId);
+        if (paper != null)
+        {
+            paper.Discontinued = true;
+            _context.SaveChanges();
+        }
+    }
+
+    public List<Paper> GetAllDiscontinuedPapers()
+    {
+        return _context.Papers.Where(p => p.Discontinued).ToList();
+    }
+
+    public List<Paper> GetPapersWithProperty(int propertyId)
+    {
+        return _context.Papers
+            .Include(p => p.Properties)
+            .Where(p => p.Properties.Any(prop => prop.Id == propertyId))
+            .ToList();
+    }
+
+    public void DeletePaper(int paperId)
+    {
+        var paper = _context.Papers.Find(paperId);
+        if (paper != null)
+        {
+            _context.Papers.Remove(paper);
+            _context.SaveChanges();
+        } 
+    }
+    // chnage to async
+     public async Task<Property> GetPropertyByIdAsync(int propertyId)
+     {
+        return await _context.Properties.FindAsync(propertyId);
+     }
+
+     public async Task<Order> PlaceOrderAsync(Order order)
+     {
+         _context.Orders.Add(order);
+         await _context.SaveChangesAsync();
+         return order;
+     }
+
+     public async Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId)
+     {
+         return await _context.Orders
+             .Include(o => o.OrderEntries)
+             .ThenInclude(oe => oe.Paper)
+             .Where(o => o.CustomerId == customerId)
+             .ToListAsync();
+     }
+
+     public async Task<Order?> GetOrderByIdAsync(int orderId)
+     {
+         return await _context.Orders
+             .Include(o => o.OrderEntries)
+             .ThenInclude(oe => oe.Paper)
+             .FirstOrDefaultAsync(o => o.Id == orderId);
+     }
+
+     public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+     {
+         return await _context.Orders
+             .Include(o => o.OrderEntries)
+             .ThenInclude(oe => oe.Paper)
+             .ToListAsync();
+     }
+
+     public async Task UpdateOrderAsync(Order order)
+     {
+         _context.Orders.Update(order); 
+         await _context.SaveChangesAsync();  
+     }
+     
+     
+     public async Task<Customer> CreateCustomerAsync(Customer customer)
+        {
+             await _context.Customers.AddAsync(customer);
+             await _context.SaveChangesAsync();
+             return customer;
+        }
+        
+     public async Task<Customer?> GetCustomerByIdAsync(int id)
+     {
+         return await _context.Customers.FindAsync(id);
+     }
+     
+  
+
+     
+     
+
+
+     
+}

@@ -22,7 +22,7 @@ public class PaperStoreService
     {
         var paper = new Paper
         {
-            Name = createPaperDto.Name,
+            Name = createPaperDto!.Name,
             Stock = createPaperDto.Stock,
             Price = createPaperDto.Price,
             Discontinued = false
@@ -52,7 +52,7 @@ public class PaperStoreService
     public async Task<PaperDto> GetPaperByIdAsync(int id)
     {
         var paper = await _repository.GetPaperByIdAsync(id);
-        if (paper == null) return null;
+        if (paper == null) return null!;
 
         var paperDto = new PaperDto
         {
@@ -139,7 +139,7 @@ public class PaperStoreService
 
         if (order == null) return null;
 
-        order.Status = orderStatusDto.Status;
+        order.Status = orderStatusDto.Status!;
 
         await _repository.UpdateOrderAsync(order);
 

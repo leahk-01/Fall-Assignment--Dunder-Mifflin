@@ -18,13 +18,13 @@ public class OrdersController : ControllerBase
     [HttpPost("place-order/{customerId}")]
     public async Task<ActionResult> PlaceOrder(int customerId, [FromBody] OrderDto orderDto)
     {
-        if (orderDto == null) return BadRequest(new { message = "Order data is required." });
+        if (orderDto == null!) return BadRequest(new { message = "Order data is required." });
 
         orderDto.CustomerId = customerId;
 
         try
         {
-            if (orderDto.OrderEntries == null || !orderDto.OrderEntries.Any())
+            if (orderDto.OrderEntries == null! || !orderDto.OrderEntries.Any())
                 return BadRequest(new { message = "At least one order entry is required." });
 
             var createdOrder = await service.PlaceOrderAsync(orderDto);

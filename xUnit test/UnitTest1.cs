@@ -89,7 +89,7 @@ public class PaperStoreRepositoryTests
         repository.UpdatePaperStock(1, 5);
         var result = await repository.GetPaperByIdAsync(1);
 
-        Assert.Equal(15, result.Stock);
+        Assert.Equal(15, result!.Stock);
     }
 
 
@@ -105,6 +105,6 @@ public class PaperStoreRepositoryTests
         var result = await repository.GetPaperByIdAsync(1);
 
 
-        Assert.Equal(2, result.Properties.Count);
+        Assert.Equal(2, result!.Properties.Count);
     }
 }

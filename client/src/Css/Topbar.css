@@ -21,7 +21,7 @@ main {
     justify-content: flex-end;
     align-items: center; 
     padding: 0 10px;  
-    background-color: lightslategray; 
+    background-color: darkslategrey; 
     z-index: 1000; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -61,5 +61,5 @@ main {
 
 /* Hover effect */
 .left-icons span:hover, .right-icons span:hover {
-    color: #ff9800;
+    color: orangered;
 }

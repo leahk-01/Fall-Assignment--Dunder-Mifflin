@@ -1,12 +1,10 @@
-name: .NET Core CI
+name: Build and Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
@@ -14,18 +12,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.403
+          dotnet-version: '8.0.403'
 
-      - name: Install dependencies
+      # Restore dependencies
+      - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build
-        run: dotnet build --configuration Release
+      # Build the project
+      - name: Build project
+        run: dotnet build --configuration Release --no-restore
 
-      - name: Run tests
+      # Run unit tests
+      - name: Run unit tests
         run: dotnet test --no-build --verbosity normal

@@ -19,8 +19,7 @@ const AddProduct: React.FC = () => {
                 const response = await fetch('http://localhost:5000/api/Paper/properties');
                 const data = await response.json();
 
-          
-
+                
                 // Group properties by propertyName
                 const grouped = data.reduce((groups: { [key: string]: { id: number; propertyValue: string }[] }, property: { id: number; propertyName: string; propertyValue: string }) => {
                     if (!groups[property.propertyName]) {

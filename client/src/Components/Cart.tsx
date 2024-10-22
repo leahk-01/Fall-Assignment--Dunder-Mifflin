@@ -1,9 +1,12 @@
 import { useAtom } from 'jotai';
 import { cartAtom, removeFromCartAtom } from '../Atoms/cartAtom';  
-import '../Css/Cart.css';  
+import '../Css/Cart.css';
+import {useNavigate} from "react-router-dom";  
+
 const Cart = () => {
     const [cart] = useAtom(cartAtom);  
     const [, removeFromCart] = useAtom(removeFromCartAtom);  
+    const navigate = useNavigate();
 
     if (cart.length === 0) {
         return <p>Your cart is empty.</p>;
@@ -35,7 +38,9 @@ const Cart = () => {
             <div className="cart-total">
                 <h2>Total Cart Sum: Kr{totalCartSum.toFixed(2)}</h2>
             </div>
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <button className="checkout-btn" 
+                    onClick={() => navigate('/Profile')}
+            >Proceed to Checkout </button> 
         </div>
     );
 };

@@ -12,9 +12,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="">
+    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="Xunit test">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Controllers/PaperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/PaperController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" afterDir="false" />
@@ -25,36 +27,28 @@
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/PaperDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/PaperDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/PropertyDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/PropertyDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Interfaces/IPaperStoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Interfaces/IPaperStoreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Models/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Models/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/MyDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/MyDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/PaperStoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/PaperStoreRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fall Assignment 2024.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Fall Assignment 2024.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fall Assignment 2024.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Fall Assignment 2024.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/PaperStoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PaperStoreService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Service.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Service.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
@@ -65,10 +59,13 @@
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Atoms/customerAtom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Atoms/customerAtom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Overview.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +81,8 @@
         <option value="JavaScript File" />
         <option value="JSON File" />
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -101,90 +98,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/b7/ebd9726b/02000003pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/bd/b064a4d4/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b07578f5c1fe43638c3d258630aba2e11c00/fc/cdb3ff59/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/PaperController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.deps.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataAccess/Dtos/OrderEntryDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PaperDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Dtos/PropertyDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Interfaces/IPaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/MyDbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/PaperStoreRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.deps.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/PaperStoreService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/PaperStoreService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/PaperStoreService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.deps.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -279,7 +198,7 @@
     <configuration name="Unnamed" type="NodeJSConfigurationType" nameIsGenerated="true" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="api.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="api.js" working-dir="$PROJECT_DIR$/client/src/services">
+    <configuration name="api.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files/nodejs/node" nameIsGenerated="true" path-to-js-file="api.js" working-dir="$PROJECT_DIR$/client/src/services">
       <method v="2" />
     </configuration>
     <configuration name="esbuild.exe" type="RunExe" factoryName=".NET Executable" temporary="true">
@@ -316,8 +235,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.npm" />
-        <item itemvalue=".NET Executable.esbuild.exe" />
         <item itemvalue="Node.js.api.js" />
+        <item itemvalue=".NET Executable.esbuild.exe" />
       </list>
     </recent_temporary>
   </component>
@@ -345,6 +264,7 @@
       <workItem from="1729172173847" duration="95269000" />
       <workItem from="1729488706101" duration="6293000" />
       <workItem from="1729522570536" duration="2340000" />
+      <workItem from="1729526121011" duration="17219000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -378,7 +298,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729484616208</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Service">
+      <option name="closed" value="true" />
+      <created>1729553466679</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729553466679</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Xunit test">
+      <option name="closed" value="true" />
+      <created>1729557729938</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729557729938</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,6 +384,8 @@
     <MESSAGE value="Update README.md" />
     <MESSAGE value="git fix" />
     <MESSAGE value="Save changes before switching to client branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save changes before switching to client branch" />
+    <MESSAGE value="Service" />
+    <MESSAGE value="Xunit test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Xunit test" />
   </component>
 </project>

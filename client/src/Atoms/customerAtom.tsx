@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import {Customer} from "../services/Api.ts";
 
-export const customerIdAtom = atom<string  | null>(null);
+export const customerAtom = atom<Customer | null>(null);
 

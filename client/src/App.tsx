@@ -9,6 +9,7 @@ import Home from './Components/Home.tsx';
 import AddProduct from './Components/Addproduct.tsx';
 import History from "./Components/History.tsx";
 import OrderHistory from "./Components/OrderHistory.tsx";
+import Overview from './Components/Overview.tsx';
 
 function App() {
     // @ts-ignore
@@ -43,6 +44,9 @@ function App() {
 
                 <Route path="/All-orders" element={<Layout>
                     <OrderHistory />
+                </Layout>} />
+                <Route path="/Overview" element={<Layout>
+                    <Overview />
                 </Layout>} />
             </Routes>
         </Router>

@@ -3,7 +3,8 @@
   <component name="UserContentModel">
     <attachedFolders />
     <explicitIncludes>
-      <Path>client</Path> <!-- Include the client folder -->
+      <Path>.github</Path>
+      <Path>client</Path>
     </explicitIncludes>
     <explicitExcludes />
   </component>

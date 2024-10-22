@@ -40,3 +40,4 @@ C:\Users\Leah\RiderProjects\Fall Assignment 2024\Api\obj\Debug\net8.0\refint\Api
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\Api\obj\Debug\net8.0\Api.pdb
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\Api\obj\Debug\net8.0\ref\Api.dll
+C:\Users\Leah\RiderProjects\Fall Assignment 2024\Api\obj\Debug\net8.0\Api.sourcelink.json

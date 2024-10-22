@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Models;
 
@@ -25,6 +24,6 @@ public class Paper
 
     [ForeignKey("PaperId")]
     [InverseProperty("Papers")]
-    [JsonIgnore] 
+    [JsonIgnore]
     public virtual ICollection<Property> Properties { get; set; } = new List<Property>();
 }

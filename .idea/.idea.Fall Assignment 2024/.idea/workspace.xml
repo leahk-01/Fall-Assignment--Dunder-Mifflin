@@ -12,18 +12,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="xUnit">
+    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="design update">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Atoms/cartAtom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Atoms/cartAtom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Atoms/orderHistoryAtom.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Cart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/AddProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/AddProduct.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/Cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/Cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/OrderHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/OrderHistory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/PaperDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/PaperDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/PaperList.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/PaperList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/Profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Controllers/CustomersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/CustomersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/OrdersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Controllers/PaperController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/PaperController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DataAccess.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DataAccess.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/CreateCustomer.Dto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/CreateCustomer.Dto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/CreatePaperDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/CreatePaperDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/OrderDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/OrderDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/OrderEntryDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/OrderEntryDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/PaperDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/PaperDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Dtos/PropertyDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Dtos/PropertyDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Interfaces/IPaperStoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Interfaces/IPaperStoreRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Models/Paper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Models/Paper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Models/Property.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Models/Property.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/MyDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/MyDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/PaperStoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/PaperStoreRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/PaperStoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PaperStoreService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xUnit test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/xUnit test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xUnit test/xUnit test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/xUnit test/xUnit test.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +97,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/b7/ebd9726b/02000003pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/bd/b064a4d4/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b07578f5c1fe43638c3d258630aba2e11c00/fc/cdb3ff59/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.deps.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataAccess/Dtos/OrderEntryDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.deps.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/DataAccess/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Service/PaperStoreService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.deps.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/xUnit test/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -222,7 +265,7 @@
       <workItem from="1729172173847" duration="95269000" />
       <workItem from="1729488706101" duration="6293000" />
       <workItem from="1729522570536" duration="2340000" />
-      <workItem from="1729526121011" duration="24287000" />
+      <workItem from="1729526121011" duration="29763000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -280,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729558069336</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="design update">
+      <option name="closed" value="true" />
+      <created>1729582160528</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729582160528</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,25 +404,7 @@
     <MESSAGE value="Service" />
     <MESSAGE value="Xunit test" />
     <MESSAGE value="xUnit" />
-    <option name="LAST_COMMIT_MESSAGE" value="xUnit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/xUnit test/UnitTest1.cs</url>
-          <line>65</line>
-          <properties documentPath="C:\Users\Leah\RiderProjects\Fall Assignment 2024\xUnit test\UnitTest1.cs" containingFunctionPresentation="Method 'InsertPaperAsync_ShouldAddPaper'">
-            <startOffsets>
-              <option value="2129" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2130" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="design update" />
+    <option name="LAST_COMMIT_MESSAGE" value="design update" />
   </component>
 </project>

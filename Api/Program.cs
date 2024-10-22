@@ -1,11 +1,9 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using DataAccess;
 using DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Service;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,15 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-     
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
 
 
-builder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();  
-builder.Services.AddScoped<PaperStoreService>();  
+builder.Services.AddScoped<IPaperStoreRepository, PaperStoreRepository>();
+builder.Services.AddScoped<PaperStoreService>();
 
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MyDbConn")));
@@ -32,8 +29,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAllOrigins", builder =>
     {
         builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
 
@@ -58,7 +55,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.UseCors("AllowAllOrigins");  // Apply CORS policy globally
+app.UseCors("AllowAllOrigins"); // Apply CORS policy globally
 
 
 app.UseRouting();

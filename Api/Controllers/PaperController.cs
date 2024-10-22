@@ -9,35 +9,29 @@ namespace Api.Controllers;
 [ApiController]
 public class PaperController(PaperStoreService service) : ControllerBase
 {
-    
-
     [HttpPost]
-    public async Task<ActionResult<PaperDto>> PostPaper([FromBody]CreatePaperDto? createPaperDto)
+    public async Task<ActionResult<PaperDto>> PostPaper([FromBody] CreatePaperDto? createPaperDto)
     {
-        if (createPaperDto==null) 
-        {
-            return BadRequest(new { message = "Paper data is required." });
-        }
-        
+        if (createPaperDto == null) return BadRequest(new { message = "Paper data is required." });
+
         try
         {
-            var createdPaper = await service.CreatePaperAsync(createPaperDto);  // Create the paper
+            var createdPaper = await service.CreatePaperAsync(createPaperDto); // Create the paper
             return Ok(createdPaper);
         }
         catch (Exception ex)
         {
             return StatusCode(500, new { message = ex.Message });
         }
-        
     }
-    
-    [HttpGet ("all")]
+
+    [HttpGet("all")]
     public ActionResult<IEnumerable<Paper>> GetPapers()
     {
         return service.GetAllPapers();
     }
-        
-        
+
+
     [HttpGet("api/paper/{id}")]
     public async Task<ActionResult<PaperDto>> GetPaperById(int id)
     {
@@ -59,8 +53,8 @@ public class PaperController(PaperStoreService service) : ControllerBase
         service.RestockPaper(id, quantity);
         return NoContent();
     }
-    
-    [HttpGet("properties")] 
+
+    [HttpGet("properties")]
     public async Task<IActionResult> GetProperties()
     {
         try
@@ -82,10 +76,4 @@ public class PaperController(PaperStoreService service) : ControllerBase
             return StatusCode(500, "An error occurred while fetching properties.");
         }
     }
-
-
-   
-   
-
-
 }

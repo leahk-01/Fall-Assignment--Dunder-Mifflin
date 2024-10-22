@@ -12,3 +12,4 @@ C:\Users\Leah\RiderProjects\Fall Assignment 2024\DataAccess\obj\Debug\net8.0\ref
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\DataAccess\obj\Debug\net8.0\DataAccess.pdb
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
 C:\Users\Leah\RiderProjects\Fall Assignment 2024\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
+C:\Users\Leah\RiderProjects\Fall Assignment 2024\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json

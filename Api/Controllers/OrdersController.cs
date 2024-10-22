@@ -18,19 +18,14 @@ public class OrdersController : ControllerBase
     [HttpPost("place-order/{customerId}")]
     public async Task<ActionResult> PlaceOrder(int customerId, [FromBody] OrderDto orderDto)
     {
-        if (orderDto == null)
-        {
-            return BadRequest(new { message = "Order data is required." });
-        }
+        if (orderDto == null) return BadRequest(new { message = "Order data is required." });
 
         orderDto.CustomerId = customerId;
 
         try
         {
             if (orderDto.OrderEntries == null || !orderDto.OrderEntries.Any())
-            {
                 return BadRequest(new { message = "At least one order entry is required." });
-            }
 
             var createdOrder = await service.PlaceOrderAsync(orderDto);
 
@@ -66,16 +61,10 @@ public class OrdersController : ControllerBase
     [HttpPut("status/{orderId}")]
     public async Task<ActionResult> UpdateOrderStatus(int orderId, [FromBody] OrderStatusDto updateStatusDto)
     {
-        if (string.IsNullOrEmpty(updateStatusDto.Status))
-        {
-            return BadRequest("New status cannot be null or empty.");
-        }
+        if (string.IsNullOrEmpty(updateStatusDto.Status)) return BadRequest("New status cannot be null or empty.");
 
         var result = await service.UpdateOrderStatusAsync(orderId, updateStatusDto);
-        if (result == null)
-        {
-            return NotFound();
-        }
+        if (result == null) return NotFound();
 
         return Ok(result);
     }

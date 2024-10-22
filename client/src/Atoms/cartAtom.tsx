@@ -28,7 +28,7 @@ export const addToCartAtom = atom(
             );
             set(cartAtom, updatedCart);  
         } else {
-            //  add it as a new item
+            //  add  as a new item
             const newCartItem = {
                 paper,
                 quantity,

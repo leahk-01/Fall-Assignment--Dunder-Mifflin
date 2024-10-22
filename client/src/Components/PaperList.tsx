@@ -42,7 +42,7 @@ const PaperList: React.FC = () => {
             }
         });
 
-    //  individual paper's detail page
+    //  individual paper's detail 
     const viewProduct = (paperId: number) => {
         navigate(`/paper/${paperId}`); 
     };

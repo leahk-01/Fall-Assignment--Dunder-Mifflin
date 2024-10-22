@@ -12,60 +12,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="Xunit test">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/indexLayout.xml" afterDir="false" />
+    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="xUnit">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fall Assignment 2024.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Fall Assignment 2024.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fall Assignment 2024.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Fall Assignment 2024.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Service.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Service.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Atoms/customerAtom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Atoms/customerAtom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Atoms/cartAtom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Atoms/cartAtom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Atoms/orderHistoryAtom.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Cart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Overview.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/AddProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/AddProduct.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/Cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/Cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/OrderHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/OrderHistory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/PaperDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/PaperDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/PaperList.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/PaperList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Css/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/Profile.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +222,7 @@
       <workItem from="1729172173847" duration="95269000" />
       <workItem from="1729488706101" duration="6293000" />
       <workItem from="1729522570536" duration="2340000" />
-      <workItem from="1729526121011" duration="17219000" />
+      <workItem from="1729526121011" duration="24287000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -314,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729557729938</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="xUnit">
+      <option name="closed" value="true" />
+      <created>1729558069336</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729558069336</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,6 +352,26 @@
     <MESSAGE value="Save changes before switching to client branch" />
     <MESSAGE value="Service" />
     <MESSAGE value="Xunit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Xunit test" />
+    <MESSAGE value="xUnit" />
+    <option name="LAST_COMMIT_MESSAGE" value="xUnit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/xUnit test/UnitTest1.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Users\Leah\RiderProjects\Fall Assignment 2024\xUnit test\UnitTest1.cs" containingFunctionPresentation="Method 'InsertPaperAsync_ShouldAddPaper'">
+            <startOffsets>
+              <option value="2129" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2130" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

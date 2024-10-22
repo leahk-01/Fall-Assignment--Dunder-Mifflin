@@ -1,49 +1,35 @@
 import '../Css/Profile.css';
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { customerAtom } from "../Atoms/customerAtom.tsx";
-import { useAtom } from "jotai";
-import { Customer } from "../services/Api.ts"; 
 
 const Profile: React.FC = () => {
     const [customerId, setCustomerId] = useState('');
     const [newCustomerData, setNewCustomerData] = useState({ name: '', email: '', address: '', phone: '' });
     const [message, setMessage] = useState('');
-    const [, setCustomer] = useAtom(customerAtom);
     const navigate = useNavigate();
-    const location = useLocation(); 
-    
-    // Extract the query parameter to determine where to redirect after login/registration
-    const searchParams = new URLSearchParams(location.search);
-    const next = searchParams.get('next');  
 
-    // Handle Login
+    // Login
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.get<Customer>(`http://localhost:5000/api/Customers/${customerId}`);
-            const customerData = response.data;
-
-           
-            setCustomer(customerData);
-
-          
-            if (next === 'overview') {
-                navigate('/overview'); // Redirect to the cart overview for order placement
+            const response = await axios.get(`http://localhost:5000/api/Orders/customer-history/${customerId}`);
+            const orders = response.data;
+            if (orders.length > 0) {
+                navigate(`/history/${customerId}`, { state: { orders } }); // Pass orders to the history page
             } else {
-                navigate(`/history/${customerData.id}`); // Redirect to the order history
+                navigate(`/history/${customerId}`, { state: { orders: [] } });
             }
         } catch (error) {
-            console.error('Failed to fetch customer data:', error);
-            setMessage('Failed to fetch customer data');
+            setMessage('Failed to fetch order history');
         }
     };
 
-    // Handle Registration
+    // Registration
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Validate required fields 
         if (!newCustomerData.name || !newCustomerData.phone || !newCustomerData.email) {
             setMessage('Please fill in all required fields.');
             return;
@@ -58,27 +44,25 @@ const Profile: React.FC = () => {
             const response = await axios.post('http://localhost:5000/api/Customers/create', {
                 name: newCustomerData.name,
                 email: newCustomerData.email,
-                address: newCustomerData.address || null,
+                address: newCustomerData.address || null, 
                 phone: newCustomerData.phone,
             });
-            const customerData = response.data;
-
-            setCustomer(customerData);
             setMessage('Account created successfully.');
-
-            if (next === 'overview') {
-                navigate('/overview'); 
-            } else {
-                navigate(`/history/${customerData.id}`);
-            }
+            navigate(`/history/${response.data.customerId}`, { state: { orders: [] } });
         } catch (error) {
-            console.error('Failed to create account:', error);
-            setMessage('Failed to create account');
+            // @ts-ignore
+            if (error.response && error.response.status === 400) {
+                setMessage('Failed to create account: Bad request. Please check the input data.');
+            } else {
+                setMessage('Failed to create account due to server error.');
+            }
         }
     };
 
+
     return (
         <div className="profile-container">
+            
             {/* Already a Customer Section */}
             <div className="form-box login-section">
                 <h2>Already a Customer</h2>

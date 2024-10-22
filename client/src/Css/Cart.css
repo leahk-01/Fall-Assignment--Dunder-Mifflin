@@ -2,8 +2,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: grey;
-    border-radius: 8px;
+    border-radius: 20px;
+    background-color: white;
+    color :black;
 }
 
 h1 {
@@ -38,35 +39,51 @@ ul {
     margin: 5px 0;
 }
 
-button {
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-button:hover {
-    background-color: #d32f2f;
-}
 
 .cart-total {
-    margin-top: 20px;
+    margin-top: 18px;
     display: flex;
     justify-content: space-between;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .checkout-btn {
-    background-color: #4CAF50;
+    background-color: orangered;
     color: white;
+    width: 40%;
     padding: 15px 30px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
 }
+.remove-btn {
+    background-color: hotpink;
+    width: 30%;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+
+
+.remove-btn:hover {
+    background-color: pink;
+    border-radius: 20px;
+    width: 30%;
+    padding: 10px;
+
+
+}
+
 
 .checkout-btn:hover {
-    background-color: #45a049;
+    background-color: pink;
+    border-radius: 20px;
+
+    padding: 15px 30px;
+    width: 40%;
+
 }

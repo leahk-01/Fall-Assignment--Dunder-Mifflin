@@ -27,7 +27,7 @@ const Cart = () => {
                         <p>Total for this item: Kr{item.totalPrice.toFixed(2)}</p>
                         
                         {/* Remove item button */}
-                        <button    
+                        <button className="remove-btn"
                             onClick={() => removeFromCart({ paper: item.paper, quantityToRemove: 1 })}  
                         >
                             Remove from Cart

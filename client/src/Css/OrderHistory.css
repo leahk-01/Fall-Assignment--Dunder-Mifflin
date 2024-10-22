@@ -1,7 +1,9 @@
 .order-history-container {
-    padding: 20px;
     max-width: 1000px;
     margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    color: black;
 }
 
 .order-history-table {
@@ -13,13 +15,15 @@
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
+    
 }
 
 .order-history-table th {
-    background-color: #f4f4f4;
+    background-color: hotpink;
 }
 
 .order-history-table select {
     padding: 5px;
     border-radius: 5px;
+    color: orangered;
 }

@@ -12,48 +12,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="unit fix">
+    <list default="true" id="195af0db-9038-491d-b226-f34d1920353d" name="Changes" comment="ci.yml update">
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fall Assignment 2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/OrdersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/ref/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net8.0/refint/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/PaperStoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PaperStoreService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/ref/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net8.0/refint/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Addproduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Addproduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Css/Topbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Css/Topbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xUnit test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/xUnit test/UnitTest1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +58,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/b7/ebd9726b/02000003pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7acad5bf48ad4f63b028ad2c1f0e3cef2c00/bd/b064a4d4/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b07578f5c1fe43638c3d258630aba2e11c00/fc/cdb3ff59/02000002pdb1.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Controllers/OrdersController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Leah/RiderProjects/Fall Assignment 2024/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.deps.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataAccess/Dtos/OrderEntryDto.cs" root0="FORCE_HIGHLIGHTING" />
@@ -267,7 +229,7 @@
       <workItem from="1729172173847" duration="95269000" />
       <workItem from="1729488706101" duration="6293000" />
       <workItem from="1729522570536" duration="2340000" />
-      <workItem from="1729526121011" duration="33189000" />
+      <workItem from="1729526121011" duration="33626000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -341,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729595266793</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ci.yml update">
+      <option name="closed" value="true" />
+      <created>1729601121506</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729601121506</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +386,7 @@
     <MESSAGE value="xUnit" />
     <MESSAGE value="design update" />
     <MESSAGE value="unit fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="unit fix" />
+    <MESSAGE value="ci.yml update" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci.yml update" />
   </component>
 </project>
